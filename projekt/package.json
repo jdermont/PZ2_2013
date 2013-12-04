@@ -1,0 +1,18 @@
+{
+    "name": "Tezauryzacja",
+    "version": "0.0.1-7",
+    "author": "Jakub Bełcik",
+    "description": "Aplikacja na zaliczenie TSW 2013",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "socket.io": "0.9.x",
+        "express": "3.x",
+        "less-middleware": "*"
+    },
+    "subdomain": "jbelcik-Tezauryzacja",
+    "engines": {
+        "node": "0.8.x"
+    }
+}

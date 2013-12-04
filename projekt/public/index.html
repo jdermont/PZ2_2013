@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="pl">
+
+	<head>
+		<title>Tezauryzacja</title>
+		<meta charset="utf-8">
+
+		<link rel="stylesheet" href="style/style.css">
+	</head>
+	
+	<body>
+		<canvas id="gameCanvas"></canvas>
+
+        <table id="inventory">
+            <tr>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+            </tr>
+            <tr>
+                <td id="item1"></td>
+                <td id="item2"></td>
+                <td id="item3"></td>
+                <td id="item4"></td>
+                <td id="item5"></td>
+                <td id="item6"></td>
+            </tr>
+        </table>
+
+        <table id="market">
+            <tr><th colspan="2">TRADE</th></tr>
+            <tr><td id="player" colspan="2"></td></tr>
+            <tr><th id="nick" colspan="2">other player</th></tr>
+            <tr>
+                <td id="trade1"></td>
+                <td id="trade2"></td>
+            </tr>
+            <tr>
+                <td id="trade3"></td>
+                <td id="trade4"></td>
+            </tr>
+            <tr><th id="you" colspan="2">you</th></tr>
+            <tr>
+                <td id="trade1local"></td>
+                <td id="trade2local"></td>
+            </tr>
+            <tr>
+                <td id="trade3local"></td>
+                <td id="trade4local"></td>
+            </tr>
+        </table>
+
+        <table id="quest">
+            <tr><th>QUEST</th></tr>
+            <tr><td id="npc"></td></tr>
+            <tr><th>desired item</th></tr>
+            <tr><td id="lookUpItem"></td></tr>
+            <tr><th>reward</th></tr>
+            <tr><td id="reward"></tr>
+        </table>
+
+        <table id="coords">
+            <tr><th>COORDINATES</th></tr>
+            <tr><td id="coordsX"></td></tr>
+            <tr><td id="coordsY"></td></tr>
+        </table>
+
+        <table id="scoreboard"></table>
+
+        <table id="keys">
+            <tr><td>press arrows to move player</td></tr>
+            <tr><td>press Q to make quest for NPC</td></tr>
+            <tr><td>press [1, ..., 6] to move item to trade or inventory</td></tr>
+            <tr><td>press T to make trade between players</td></tr>
+        </table>
+
+        <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+        <script type="text/javascript" src='js/jquery.min.js'></script>
+		<script type="text/javascript" src="js/requestAnimationFrame.js"></script>
+		<script type="text/javascript" src="js/Keys.js"></script>
+		<script type="text/javascript" src="js/Player.js"></script>
+        <script type="text/javascript" src="js/Item.js"></script>
+        <script type="text/javascript" src="js/Npc.js"></script>
+		<script type="text/javascript" src="js/tezauryzacja.js"></script>
+
+		<script>
+			init();
+			animate();
+		</script>
+	</body>
+</html>
