@@ -6,4 +6,3 @@ Jacek Dermont
 Marcin Horoszko
 
 Koncepcja: gra multiplayer na node.js; wzorowana na bombermine, ale lepsza
-
