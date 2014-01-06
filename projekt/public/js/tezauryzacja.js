@@ -18,12 +18,12 @@ var socket,
     incomeItem;
 
 var init = function() {
-
+    var name = window.prompt("Enter your name:","Player");
     canvas = document.getElementById("gameCanvas");
     ctx = canvas.getContext("2d");
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 500;
+    canvas.height = 500;
 
     keys = new Keys();
 
@@ -96,8 +96,8 @@ var onKeyUp = function(e) {
 };
 
 var onResize = function() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 500;
+    canvas.height = 500;
 };
 
 var onId = function (data) {
