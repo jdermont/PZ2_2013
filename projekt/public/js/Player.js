@@ -149,7 +149,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
 
                             inventory.splice(j, 1);
                             points += remoteNpcs[i].getReward();
-			    if (moveAmount < 4) moveAmount += 1;
+			    if (moveAmount < 4) moveAmount += 0.5;
                             socket.emit("update points", {points: points});
 
                             remoteNpcs[i].generateQuest();
@@ -196,7 +196,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
         // UP KEY PRIORITY
         if (keys.up && y > -510) {
             if ((keys.left && x > -510) || (keys.right && x < 1010)) {
-                y -= moveAmount / 2;
+                y -= moveAmount / 1.41;
             } else {
                 y -= moveAmount;
             }
@@ -219,7 +219,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
             }
         } else if (keys.down && y < 1010) {
             if ((keys.left && x > -510) || (keys.right && x < 1010)) {
-                y += moveAmount / 2.0;
+                y += moveAmount / 1.41;
             } else {
                 y += moveAmount;
             }
@@ -245,7 +245,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
         // LEFT KEY PRIORITY
         if (keys.left && x > -510) {
             if ((keys.up && y > -510) || (keys.down && y < 1010)) {
-                x -= moveAmount / 2.0;
+                x -= moveAmount / 1.41;
             } else {
                 x -= moveAmount;
                 counterLeft += 1;
@@ -267,7 +267,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
             }
         } else if (keys.right && x < 1010) {
             if ((keys.up && y > -510) || (keys.down && y < 1010)) {
-                x += moveAmount / 2;
+                x += moveAmount / 1.41;
             } else {
                 x += moveAmount;
                 counterRight += 1;
