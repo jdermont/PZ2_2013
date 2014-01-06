@@ -10,7 +10,9 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
         counterDown = 0,
         counterLeft = 0,
         counterRight = 0,
+	playerImage = new Image(),
         id;
+    playerImage.src = imageSrc;
 
     var getX = function() {
         return x;
@@ -303,39 +305,40 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
     };
 
     var drawLocalPlayer = function(ctx) {
-        var image = new Image();
-        image.src = imageSrc;
-
+        //var image = new Image();
+        //image.src = imageSrc;
+	playerImage.src = imageSrc;
+      
         if (!(x > -300)) {
             // LEFT
             if (!(y > -300)) {
                 // TOP
                 ctx.fillRect(0, 0, canvas.width, 1);
                 ctx.fillRect(0, 0, 1, canvas.height);
-                ctx.drawImage(image, x + 300 + canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
+		ctx.drawImage(playerImage, x + 300 + canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter); 
             } else if (y < 800 && y > -300) {
                 // CENTER
                 ctx.fillRect(0, 0, 1, canvas.height);
-                ctx.drawImage(image, x + 300 + canvas.width / 2 - imageCenter, canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x + 300 + canvas.width / 2 - imageCenter, canvas.height / 2 - imageCenter);
             } else {
                 // BOTTOM
                 ctx.fillRect(0, canvas.height - 1, canvas.width, 1);
                 ctx.fillRect(0, 0, 1, canvas.height);
-                ctx.drawImage(image, x + 300 + canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x + 300 + canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
             }
         } else if (x < 800 && x > -300) {
             // CENTER
             if (!(y > -300)) {
                 // TOP
                 ctx.fillRect(0, 0, canvas.width, 1);
-                ctx.drawImage(image, canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
             } else if (y < 800 && y > -300) {
                 // CENTER
-                ctx.drawImage(image, canvas.width / 2 - imageCenter, canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, canvas.width / 2 - imageCenter, canvas.height / 2 - imageCenter);
             } else {
                 // BOTTOM
                 ctx.fillRect(0, canvas.height - 1, canvas.width, 1);
-                ctx.drawImage(image, canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
             }
         } else {
             // RIGHT
@@ -343,60 +346,60 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
                 // TOP
                 ctx.fillRect(0, 0, canvas.width, 1);
                 ctx.fillRect(canvas.width - 1, 0, 1, canvas.height);
-                ctx.drawImage(image, x - 300 - canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - 300 - canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
             } else if (y < 800 && y > -300) {
                 // CENTER
                 ctx.fillRect(canvas.width - 1, 0, 1, canvas.height);
-                ctx.drawImage(image, x - 300 - canvas.width / 2 - imageCenter, canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - 300 - canvas.width / 2 - imageCenter, canvas.height / 2 - imageCenter);
             } else {
                 // BOTTOM
                 ctx.fillRect(0, canvas.height - 1, canvas.width, 1);
                 ctx.fillRect(canvas.width - 1, 0, 1, canvas.height);
-                ctx.drawImage(image, x - 300 - canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - 300 - canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
             }
         }
     };
 
     var drawPlayer = function(ctx, xLocal, yLocal) {
-        var image = new Image();
-        image.src = imageSrc;
-
+        //var image = new Image();
+        //image.src = imageSrc;
+      playerImage.src = imageSrc;
 
         if (!(xLocal > -300)) {
             // LEFT
             if (!(yLocal > -300)) {
                 // TOP
-                ctx.drawImage(image, x + 300 + canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x + 300 + canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
             } else if (yLocal < 800 && yLocal > -300) {
                 // CENTER
-                ctx.drawImage(image, x + 300 + canvas.width / 2 - imageCenter, y - yLocal + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x + 300 + canvas.width / 2 - imageCenter, y - yLocal + canvas.height / 2 - imageCenter);
             } else {
                 // BOTTOM
-                ctx.drawImage(image, x + 300 + canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x + 300 + canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
             }
         } else if (xLocal < 800 && xLocal > -300) {
             // CENTER
             if (!(yLocal > -300)) {
                 // TOP
-                ctx.drawImage(image, x - xLocal + canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - xLocal + canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
             } else if (yLocal < 800 && yLocal > -300) {
                 // CENTER
-                ctx.drawImage(image, x - xLocal + canvas.width / 2 - imageCenter, y - yLocal + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - xLocal + canvas.width / 2 - imageCenter, y - yLocal + canvas.height / 2 - imageCenter);
             } else {
                 // BOTTOM
-                ctx.drawImage(image, x - xLocal + canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - xLocal + canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
             }
         } else {
             // RIGHT
             if (!(yLocal > -300)) {
                 // TOP
-                ctx.drawImage(image, x - 300 - canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - 300 - canvas.width / 2 - imageCenter, y + 300 + canvas.height / 2 - imageCenter);
             } else if (yLocal < 800 && yLocal > -300) {
                 // CENTER
-                ctx.drawImage(image, x - 300 - canvas.width / 2 - imageCenter, y - yLocal + canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - 300 - canvas.width / 2 - imageCenter, y - yLocal + canvas.height / 2 - imageCenter);
             } else {
                 // BOTTOM
-                ctx.drawImage(image, x - 300 - canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
+                ctx.drawImage(playerImage, x - 300 - canvas.width / 2 - imageCenter, y - 300 - canvas.height / 2 - imageCenter);
             }
         }
     };

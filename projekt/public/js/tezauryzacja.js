@@ -238,9 +238,10 @@ var onRemovePlayer = function(data) {
 
 var animate = function() {
     updateLocalPlayer();
+    
     drawWorld();
-
     window.requestAnimFrame(animate);
+   
 };
 
 var updateLocalPlayer = function() {

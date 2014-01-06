@@ -1,7 +1,9 @@
 var Item = function(startX, startY, startImageSrc) {
     var x = startX,
         y = startY,
-        imageSrc = startImageSrc;
+        imageSrc = startImageSrc,
+	image = new Image();
+	image.src = imageSrc;
 
     var getX = function() {
         return x;
@@ -28,9 +30,7 @@ var Item = function(startX, startY, startImageSrc) {
     };
 
     var drawItem = function(ctx, xLocal, yLocal) {
-        var image = new Image(),
-            date = new Date(),
-            guard = date.getSeconds();
+        var guard = new Date().getSeconds();
 
         switch (guard % 4) {
             case 0:
@@ -48,7 +48,6 @@ var Item = function(startX, startY, startImageSrc) {
         }
 
         image.src = imageSrc;
-
 
         if (!(xLocal > -300)) {
             // LEFT
