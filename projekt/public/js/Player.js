@@ -10,9 +10,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
         counterDown = 0,
         counterLeft = 0,
         counterRight = 0,
-	playerImage = new Image(),
         id;
-    playerImage.src = imageSrc;
 
     var getX = function() {
         return x;
@@ -291,8 +289,8 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
             }
         }
 
-        $('#coordsX').html('X :  ' + x);
-        $('#coordsY').html('Y :  ' + y);
+        $('#coordsX').html('X :  ' + Math.round(x));
+        $('#coordsY').html('Y :  ' + Math.round(y));
 
         if (prevX != x || prevY != y) {
             return true
@@ -305,7 +303,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
     };
 
     var drawLocalPlayer = function(ctx) {
-        //var image = new Image();
+        var playerImage = new Image();
         //image.src = imageSrc;
 	playerImage.src = imageSrc;
       
@@ -361,7 +359,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
     };
 
     var drawPlayer = function(ctx, xLocal, yLocal) {
-        //var image = new Image();
+        var playerImage = new Image();
         //image.src = imageSrc;
       playerImage.src = imageSrc;
 

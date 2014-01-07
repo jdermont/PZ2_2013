@@ -4,9 +4,7 @@ var Npc = function(startX, startY, startImageSrc) {
         imageSrc = startImageSrc,
         itemList,
         desiredItem,
-        reward,
-	image = new Image();
-    image.src = imageSrc;
+        reward;
 
     var getX = function() {
         return x;
@@ -63,7 +61,7 @@ var Npc = function(startX, startY, startImageSrc) {
     };
 
     var drawNpc = function(ctx, xLocal, yLocal) {
-        //var image = new Image();
+        var image = new Image();
         image.src = imageSrc;
 
         if (!(xLocal > -300)) {

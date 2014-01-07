@@ -1,9 +1,7 @@
 var Item = function(startX, startY, startImageSrc) {
     var x = startX,
         y = startY,
-        imageSrc = startImageSrc,
-	image = new Image();
-	image.src = imageSrc;
+        imageSrc = startImageSrc;
 
     var getX = function() {
         return x;
@@ -47,6 +45,7 @@ var Item = function(startX, startY, startImageSrc) {
                 break;
         }
 
+        var image = new Image();
         image.src = imageSrc;
 
         if (!(xLocal > -300)) {
