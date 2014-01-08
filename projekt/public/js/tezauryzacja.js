@@ -181,6 +181,7 @@ var onSortPlayersPoints = function() {
     var i;
 
     $('#scoreboard').empty();
+    $('<tr style="font-weight:bold"><td>Player</td><td>Points</td></tr>').appendTo('#scoreboard');
 
     remotePlayersPoints.sort(comparePlayersPoints);
 
