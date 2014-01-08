@@ -15,7 +15,8 @@ var socket,
     makeTrade = false,
     onSale,
     outcomeItem,
-    incomeItem;
+    incomeItem,
+    seconds = Math.round(Math.random()*100)+800;
 
 var init = function() {
     var name = window.prompt("Enter your name:","Player");
@@ -47,10 +48,22 @@ var init = function() {
     //socket.emit("generate coords");
 
     setEventHandlers();
+    setInterval(function(){
+      $('#stopwatch').empty();
+      seconds--;
+      var minutes = Math.floor(seconds / 60);
+      var sec = seconds % 60;
+      if (sec < 10) sec = "0"+sec;
+      document.getElementById("stopwatch").innerHTML="This rounds ends in... "+minutes+":"+sec;
+      
+    },1000);
+    
 };
 
 var setEventHandlers = function() {
     window.addEventListener("keydown", onKeyDown, false);
+    window.addEventListener("mousedown", onKeyDown, false);
+    window.addEventListener("mouseup", onKeyUp, false);
     window.addEventListener("keyup", onKeyUp, false);
 
     window.addEventListener("resize", onResize, false);
@@ -86,12 +99,14 @@ var setEventHandlers = function() {
 
 var onKeyDown = function(e) {
     if (localPlayer) {
+      e.keyCode = 37;
         keys.onKeyDown(e);
     }
 };
 
 var onKeyUp = function(e) {
     if (localPlayer) {
+      e.keyCode = 37;
         keys.onKeyUp(e);
     }
 };
@@ -185,16 +200,16 @@ var onSortPlayersPoints = function() {
     var i;
 
     $('#scoreboard').empty();
-    $('<tr style="font-weight:bold"><td>Player</td><td>Points</td></tr>').appendTo('#scoreboard');
+    $('<tr><th style="border-right: 1px solid black;">Player</th><th>Points</th></tr>').appendTo('#scoreboard');
 
     remotePlayersPoints.sort(comparePlayersPoints);
 
     for (i = 0; i < remotePlayersPoints.length; i += 1) {
         if (remotePlayersPoints[i].player == you) {
-            $('<tr  style="font-weight:bold"><td>' + remotePlayersPoints[i].name + '</td>' +
+            $('<tr  style="font-weight:bold"><td style="border-right: 1px solid black;">' + remotePlayersPoints[i].name + '</td>' +
               '<td>' + remotePlayersPoints[i].points + '</td></tr>').appendTo('#scoreboard');
         } else {
-            $('<tr><td>' + remotePlayersPoints[i].name + '</td>' +
+            $('<tr><td style="border-right: 1px solid black;">' + remotePlayersPoints[i].name + '</td>' +
               '<td>' + remotePlayersPoints[i].points + '</td></tr>').appendTo('#scoreboard');
         }
     }

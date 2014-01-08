@@ -40,6 +40,10 @@ list-style:none;
   text-decoration: underline;
 }
 
+#topka p {
+  float: right;
+}
+
 
 canvas {
     position: absolute;
@@ -48,7 +52,6 @@ canvas {
     margin-left: -300px;
     margin-top: -295px;
     background: limegreen url('../img/bg.png') repeat;
-    
 }
 
 #inventory {
@@ -182,4 +185,35 @@ canvas {
     left: 50%;
     top: 50%;
     margin-left: 310px;
+}
+
+#stopwatch {
+  position: absolute;
+  width: 250px;
+  left: 50%;
+  top: 50%;
+  margin-left: 305px;
+  margin-top: -325px;
+}
+
+#scoreboard {
+  position: absolute;
+  width: 250px;
+  left: 50%;
+  top: 50%;
+  margin-left: 305px;
+  margin-top: -295px;
+}
+
+#scoreboard th {
+ font-weight:bold;
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 0;
+}
+
+#scoreboard td {
+  border-bottom: 1px solid black;
+    margin: 0;
+  padding: 0;
 }
