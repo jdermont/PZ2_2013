@@ -41,6 +41,7 @@ var init = function() {
         startInventory = [];
 
     localPlayer = new Player(startX, startY, startImageSrc, startInventory, 0);
+    localPlayer.name = name;
     //localPlayer.setCoordGuard(false);
 
     //socket.emit("generate coords");
@@ -110,7 +111,9 @@ var onSocketConnected = function() {
     socket.emit("new player", {x: localPlayer.getX(), y: localPlayer.getY(),
         image: localPlayer.getImageSrc(),
         inventory: localPlayer.getInventory(),
-        points: localPlayer.getPoints()});
+        points: localPlayer.getPoints(),
+        name: localPlayer.name
+    });
 
     socket.emit("update points", {points: localPlayer.getPoints()});
 };
@@ -126,6 +129,7 @@ var onSocketDisconnect = function() {
 var onNewPlayer = function(data) {
     var newPlayer = new Player(data.x, data.y, data.image, data.inventory, data.points);
     newPlayer.id = data.id;
+    newPlayer.name = data.name
 
     console.log("New player connected: " + data.id);
 
@@ -174,7 +178,7 @@ var onClearPlayersPoints = function() {
 };
 
 var onPointsUpdated = function(data) {
-    remotePlayersPoints.push({player: data.player, points: data.points});
+    remotePlayersPoints.push({player: data.player, points: data.points, name: data.name});
 };
 
 var onSortPlayersPoints = function() {
@@ -187,10 +191,10 @@ var onSortPlayersPoints = function() {
 
     for (i = 0; i < remotePlayersPoints.length; i += 1) {
         if (remotePlayersPoints[i].player == you) {
-            $('<tr  style="font-weight:bold"><td>' + remotePlayersPoints[i].player + '</td>' +
+            $('<tr  style="font-weight:bold"><td>' + remotePlayersPoints[i].name + '</td>' +
               '<td>' + remotePlayersPoints[i].points + '</td></tr>').appendTo('#scoreboard');
         } else {
-            $('<tr><td>' + remotePlayersPoints[i].player + '</td>' +
+            $('<tr><td>' + remotePlayersPoints[i].name + '</td>' +
               '<td>' + remotePlayersPoints[i].points + '</td></tr>').appendTo('#scoreboard');
         }
     }

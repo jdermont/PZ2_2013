@@ -7,9 +7,9 @@ var util = require("util"),
     players,
     playersPoints,
     items,
-    itemsAmount = 20,
+    itemsAmount = 30,
     npcs,
-    npcsAmount = 10,
+    npcsAmount = 15,
     imageSize = 32,
     imageCenter = imageSize / 2,
     itemImageLength = 64,
@@ -175,11 +175,14 @@ var onClientDisconnect = function() {
 var onNewPlayer = function(data) {
     var newPlayer = new Player(data.x, data.y, data.image, data.inventory, data.points), i, existingPlayer, existingItem, existingNpc;
     newPlayer.id = this.id;
+    newPlayer.name = data.name;
 
     this.broadcast.emit("new player", {id: newPlayer.id, x: newPlayer.getX(),
                                        y: newPlayer.getY(), image: newPlayer.getImageSrc(),
                                        inventory: newPlayer.getInventory(),
-                                       points: newPlayer.getPoints()});
+                                       points: newPlayer.getPoints(),
+					name: newPlayer.name
+    });
 
     for (i = 0; i < npcs.length; i += 1) {
         existingNpc = npcs[i];
@@ -200,7 +203,9 @@ var onNewPlayer = function(data) {
         this.emit("new player", {id: existingPlayer.id, x: existingPlayer.getX(),
                                  y: existingPlayer.getY(), image: existingPlayer.getImageSrc(),
                                  inventory: existingPlayer.getInventory(),
-                                 points: existingPlayer.getPoints()});
+                                 points: existingPlayer.getPoints(),
+	  name: existingPlayer.name
+	});
     }
 
     players.push(newPlayer);
@@ -268,10 +273,10 @@ var onUpdatePoints = function(data) {
     this.broadcast.emit("clear players points");
 
     for (i = 0; i < players.length; i += 1) {
-        playersPoints.push({player: players[i].id, points: players[i].getPoints()});
+        playersPoints.push({player: players[i].id, points: players[i].getPoints(), name: players[i].name});
 
-        this.emit("points updated", {player: players[i].id.slice(0, 8), points: players[i].getPoints()});
-        this.broadcast.emit("points updated", {player: players[i].id.slice(0, 8), points: players[i].getPoints()});
+        this.emit("points updated", {player: players[i].id.slice(0, 8), points: players[i].getPoints(), name: players[i].name});
+        this.broadcast.emit("points updated", {player: players[i].id.slice(0, 8), points: players[i].getPoints(), name: players[i].name});
     }
 
     playersPoints.sort(comparePlayersPoints);

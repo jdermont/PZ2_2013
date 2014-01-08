@@ -10,6 +10,7 @@ var Player = function(startX, startY, startImageSrc, startInventory, startPoints
         counterDown = 0,
         counterLeft = 0,
         counterRight = 0,
+	name,
         id;
 
     var getX = function() {

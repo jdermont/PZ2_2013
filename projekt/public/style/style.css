@@ -19,12 +19,12 @@ body {
 #topka ul {
 list-style:none;
     position:relative;
-    left:45%; 
     margin: 0;
     padding: 0;
 }
 
 #topka li {
+  margin-left: 160px;
   position: relative;
   width: 200px;
   text-align: center;
