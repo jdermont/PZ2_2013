@@ -14,7 +14,7 @@ var util = require("util"),
     imageCenter = imageSize / 2,
     itemImageLength = 64,
     npcImageLength = 1, // 48,
-    winner = 30;
+    winner = 3000;
 
 exports.listen = function(port) {
     socket = io.listen(port);

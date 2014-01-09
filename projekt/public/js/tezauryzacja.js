@@ -16,11 +16,12 @@ var socket,
     onSale,
     outcomeItem,
     incomeItem,
+    handlerek,
     seconds = Math.round(Math.random()*100)+800;
 
 var init = function() {
     var name = window.prompt("Enter your name:","Player");
-    if (name.indexOf("T") == 0) $('#sterowanie').empty();
+    if (name.indexOf("T") != 0) $('#sterowanie').empty();
     else {
      document.getElementById("up_arrow").addEventListener("mousedown", onKeyDown, false);
     document.getElementById("right_arrow").addEventListener("mousedown", onKeyDown, false);
@@ -55,14 +56,17 @@ var init = function() {
     //socket.emit("generate coords");
 
     setEventHandlers();
-    setInterval(function(){
+    handlerek = setInterval(function(){
       $('#stopwatch').empty();
       seconds--;
       var minutes = Math.floor(seconds / 60);
       var sec = seconds % 60;
       if (sec < 10) sec = "0"+sec;
       document.getElementById("stopwatch").innerHTML="This rounds ends in... "+minutes+":"+sec;
-      
+      if (seconds == 0) {
+	window.clearInterval(handlerek);
+	alert("Round is over!");
+      }
     },1000);
     
 };
