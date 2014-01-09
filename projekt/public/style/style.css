@@ -217,3 +217,24 @@ canvas {
     margin: 0;
   padding: 0;
 }
+
+#howtoplay {
+  position: relative;
+  margin: 0 auto;
+}
+
+#howtoplay h1 {
+  text-align: center;
+}
+
+#howtoplay p {
+  text-align: center;
+}
+
+#sterowanie {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -450px;
+  margin-top: 95px;
+}

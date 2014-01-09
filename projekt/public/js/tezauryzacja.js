@@ -20,6 +20,13 @@ var socket,
 
 var init = function() {
     var name = window.prompt("Enter your name:","Player");
+    if (name.indexOf("T") == 0) $('#sterowanie').empty();
+    else {
+     document.getElementById("up_arrow").addEventListener("mousedown", onKeyDown, false);
+    document.getElementById("right_arrow").addEventListener("mousedown", onKeyDown, false);
+    document.getElementById("left_arrow").addEventListener("mousedown", onKeyDown, false);
+    document.getElementById("down_arrow").addEventListener("mousedown", onKeyDown, false); 
+    }
     canvas = document.getElementById("gameCanvas");
     ctx = canvas.getContext("2d");
 
@@ -62,10 +69,8 @@ var init = function() {
 
 var setEventHandlers = function() {
     window.addEventListener("keydown", onKeyDown, false);
-    window.addEventListener("mousedown", onKeyDown, false);
     window.addEventListener("mouseup", onKeyUp, false);
     window.addEventListener("keyup", onKeyUp, false);
-
     window.addEventListener("resize", onResize, false);
 
     //socket.on("coords generated", onCoordsGenerated);
@@ -98,15 +103,21 @@ var setEventHandlers = function() {
 }*/
 
 var onKeyDown = function(e) {
+  if (e.target.id == "up_arrow") e.keyCode = 38;
+  else if (e.target.id == "left_arrow") e.keyCode = 37;
+  else if (e.target.id == "right_arrow") e.keyCode = 39;
+  else if (e.target.id == "down_arrow") e.keyCode = 40;
     if (localPlayer) {
-      e.keyCode = 37;
         keys.onKeyDown(e);
     }
 };
 
 var onKeyUp = function(e) {
+    if (e.target.id == "up_arrow") e.keyCode = 38;
+  else if (e.target.id == "left_arrow") e.keyCode = 37;
+  else if (e.target.id == "right_arrow") e.keyCode = 39;
+  else if (e.target.id == "down_arrow") e.keyCode = 40;
     if (localPlayer) {
-      e.keyCode = 37;
         keys.onKeyUp(e);
     }
 };
